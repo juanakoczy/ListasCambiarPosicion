@@ -14,7 +14,7 @@ int main() {
 
     printlist(nuevalista);
 
-    swapNode(nuevalista, newNode(5),3);
+    swapNode(nuevalista, newNode(5),1);
 
     printlist(nuevalista);
 

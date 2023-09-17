@@ -69,25 +69,28 @@ void swapNode (List * list, Node * nodeToSwap, int pos){
         printf("Lista vacia, no se puede intercambiar.");
         exit (-1);
     }
-    else{
-        Node * aux = list->head;//persisto la cabeza en un auxiliar
+    else {
+        Node *aux = list->head;//persisto la cabeza en un auxiliar
         int cont = 0;//creo un contador
 
-        while(aux!=NULL&&cont<pos-1){//cuento las posiciones hasta llegar a la pedida
+        while (aux != NULL && cont < pos - 1) {//cuento las posiciones hasta llegar a la pedida
             cont++;
             aux = aux->next;
         }
-        if(aux == NULL){//la lista es mas corta y no se encuentra la posicion
+        if (aux == NULL) {//la lista es mas corta y no se encuentra la posicion
             printf("La posicion no se encuentra en la lista.");
             exit(-1);
+        } else if (aux->next == NULL){
+            aux->prev = nodeToSwap->prev;
+            aux->data = nodeToSwap->data;
+            nodeToSwap->next = NULL;
+        }
+        else{
+            aux->prev = nodeToSwap->prev;
+            aux->data = nodeToSwap->data;
+            nodeToSwap->next = aux->next;
         }
 
-        else{
-            aux->prev = nodeToSwap;
-            aux= nodeToSwap; //el error esta en esta linea
-            aux->next = nodeToSwap->next;
-
-        }free(aux);
     }
 }
 
